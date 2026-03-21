@@ -7,16 +7,14 @@ const Messages = () => {
   const {messages,loading}=useGetMessages();
  const lastMessageRef = useRef();
  useEffect(()=>{
-   setTimeout(()=>{
-        lastMessageRef.current?.scrollIntoView({behavior:"smooth"});
-   },100)
+   lastMessageRef.current?.scrollIntoView({behavior:"smooth"});
   },[messages])
 
   return (
-    <div className='px-4 flex-1 overflow-auto flex flex-col'>
-      {!loading && messages.length > 0 && messages.map((message)=>(
+    <div className='px-4 flex-1 overflow-y-auto flex flex-col'>
+      {!loading && messages.length > 0 && messages.map((message,idx)=>(
           <div key={message._id}
-          ref={lastMessageRef}>
+          ref={idx === messages.length - 1 ? lastMessageRef : null}>
              <Message  message={message}/>
           </div>
       ))}
