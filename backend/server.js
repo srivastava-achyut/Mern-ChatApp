@@ -7,7 +7,8 @@ import userRoute from "./routes/user.routes.js"
 
 
 import cookieParser from 'cookie-parser'
-const app = express();
+import {app,server} from "./socket/socket.js"
+// const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 5000
@@ -20,7 +21,7 @@ app.use("/api/messages",messageRoute)
 app.use("/api/users", userRoute)
 
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectmongo()
     console.log('server is listening on port 5000');
 })
