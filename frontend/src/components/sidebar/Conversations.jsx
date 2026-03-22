@@ -6,7 +6,7 @@ const Conversations = () => {
   const { loading, conversations } = useGetConversations();
   console.log("Conversations:", conversations);
   return (
-    <div className='py-2 flex flex-col overflow-auto'>
+    <div className='py-2 flex flex-col flex-1 overflow-auto custom-scrollbar'>
         {conversations.map((conversation,idx) => (
              <Conversation
               key={conversation._id}

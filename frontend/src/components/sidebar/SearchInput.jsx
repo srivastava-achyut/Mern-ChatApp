@@ -7,7 +7,7 @@ const SearchInput = () => {
 
   const [search, setSearch] = useState("");
 
-  const {setSelectedConversations} = useConversation();
+  const {setSelectedConversation} = useConversation();
   const {conversations} = useGetConversations();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const SearchInput = () => {
     }
     const conversation = conversations.find((conv)=> conv.fullname.toLowerCase().includes(search.toLowerCase()))
     if(conversation){
-      setSelectedConversations(conversation);
+      setSelectedConversation(conversation);
       setSearch("");
     }else{
       toast.error('No conversation found');
